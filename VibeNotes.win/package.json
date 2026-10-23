@@ -1,0 +1,16 @@
+{
+  "name": "vibenotes-win",
+  "productName": "VibeNotes",
+  "version": "0.2.1",
+  "description": "VibeNotes for Windows - screen-top quick notes, file shelf and keep-awake. A Windows port inspired by the open-source macOS app oil-oil/NotchNotes.",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "XinLeiYin",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "electron": "^33.0.0"
+  }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data: file:; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+  <title>VibeNotes</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="stage">
+    <!-- Collapsed pill (acts as the "notch") -->
+    <div id="pill" title="">
+      <span class="pill-dot"></span>
+      <span class="pill-grip pill-grip-l" title="按住拖动">⠿</span>
+      <span class="pill-label"><b>VibeNotes</b>&nbsp;便签</span>
+      <span class="pill-grip pill-grip-r" title="按住拖动">⠿</span>
+      <span class="pill-dot"></span>
+    </div>
+
+    <!-- Expanded panel -->
+    <div id="panel">
+      <div id="toolbar">
+        <div id="drag-handle" title="拖动移动窗口位置">⠿</div>
+        <div id="tabs"></div>
+        <button id="btn-add-tab" class="icon-btn" title="新建便签 (Ctrl+T)">＋</button>
+        <button id="btn-preview" class="icon-btn" title="预览 / 编辑 (Ctrl+P)">👁</button>
+        <button id="btn-pin" class="icon-btn" title="固定：保持展开并置顶（再次点击取消）">📌</button>
+        <button id="btn-restore" class="icon-btn" title="恢复上次删除的便签">↺</button>
+        <button id="btn-settings" class="icon-btn" title="设置">⚙</button>
+        <button id="btn-collapse" class="icon-btn" title="收起 (Esc)">✕</button>
+      </div>
+
+      <div id="toast"></div>
+
+      <div id="editor-area">
+        <div class="editor-stack" id="edit-stack">
+          <div id="hl" aria-hidden="true"></div>
+          <textarea id="editor" spellcheck="false"
+            placeholder="随手记 Markdown…&#10;# 标题 / **加粗** / - 列表 / - [ ] 任务 / `代码`&#10;粘贴截图可直接插入"></textarea>
+        </div>
+        <div id="preview" class="hidden"></div>
+      </div>
+
+      <div id="shelf">
+        <div id="shelf-head">
+          <span>文件暂存区</span>
+          <span id="shelf-count"></span>
+          <span class="spacer"></span>
+          <span class="shelf-link" id="shelf-clear" title="清空暂存区（不删除原文件）">清空</span>
+        </div>
+        <div id="shelf-items"></div>
+      </div>
+
+      <!-- Settings popover -->
+      <div id="settings-pop" class="hidden">
+        <div class="set-title">设置</div>
+        <div class="set-group">
+          <div class="set-label">顶部触发方式</div>
+          <div class="seg" id="seg-mode">
+            <button data-mode="hover">悬停</button>
+            <button data-mode="click">点击</button>
+            <button data-mode="tray">仅托盘</button>
+          </div>
+        </div>
+        <div class="set-group">
+          <div class="set-label">盒子快捷收起</div>
+          <div class="seg" id="seg-collapse">
+            <button data-collapse="mouseLeave">鼠标移出</button>
+            <button data-collapse="none">无</button>
+          </div>
+        </div>
+        <div class="set-group">
+          <div class="set-row"><span>保持唤醒（防止系统休眠）</span><div class="switch" id="sw-keepawake"></div></div>
+          <div class="set-row"><span>屏幕常亮（防止屏幕关闭）</span><div class="switch" id="sw-screen"></div></div>
+        </div>
+        <div class="set-actions">
+          <button id="btn-open-data">打开数据文件夹</button>
+          <button id="btn-startup">开机自启</button>
+        </div>
+        <div class="about">
+          VibeNotes for Windows · v0.2.1<br />
+          Windows 移植版，功能参考开源项目 oil-oil/NotchNotes（macOS）。<br />
+          笔记与暂存记录保存在本机。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
